@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Persona;
 import views.ShowConsole;
 
 public class MetodosBusqueda {
@@ -69,4 +70,42 @@ public class MetodosBusqueda {
 
         return null;
     }
+
+    public Persona serchPersonByName(Persona[] personas,String name){
+        for (Persona persona : personas) {
+            if (persona.getName().equals(name)) {
+                return persona;
+            }
+        }
+        return null;
+    }
+
+    // Encontrar una persona que sea mayot de: age
+    // Y la edad sea impar
+    public Persona findPersonByAgeAndImpar(Persona[] personas, int age) {
+        for (Persona persona : personas) {
+            if (persona.getAge() > age && persona.getAge() % 2 != 0) {
+                return persona;
+            }
+        }
+        return null;
+    }
+
+public Persona findPersonByValueName(Persona[] personas, int valorBuscado) {
+        
+        for (Persona persona : personas) {
+            
+            int valorNombreActual = 0;
+            String nombre = persona.getName();
+
+            for (int i = 0; i < nombre.length(); i++) {
+                valorNombreActual += (int) nombre.charAt(i);
+            }
+
+            if (valorNombreActual == valorBuscado) {
+                return persona; 
+            }
+        }
+        return null;
+    }    
 }
